@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Mercury",
+    "introduction": "Mercury is the closest planet to the Sun and the smallest in the Solar System.",
+    "basicInfo": {
+      "diameter": "4,880 km",
+      "distanceFromSun": "57.9 million km",
+      "surfaceTemperature": "−173 to 427 °C",
+      "moons": "0"
+    }
+  },
+  {
+    "name": "Venus",
+    "introduction": "Venus is similar in size and composition to Earth but has a thick, toxic atmosphere and surface temperatures hot enough to melt lead.",
+    "basicInfo": {
+      "diameter": "12,104 km",
+      "distanceFromSun": "108.2 million km",
+      "surfaceTemperature": "462 °C",
+      "moons": "0"
+    }
+  },
+  {
+    "name": "Earth",
+    "introduction": "Earth is the third planet from the Sun and the only known planet to support life. It has a diverse climate and is covered with water and land.",
+    "basicInfo": {
+      "diameter": "12,742 km",
+      "distanceFromSun": "149.6 million km",
+      "surfaceTemperature": "−88 to 58 °C",
+      "moons": "1"
+    }
+  },
+  {
+    "name": "Mars",
+    "introduction": "Mars is known as the Red Planet due to its reddish appearance caused by iron oxide on its surface. It has the largest volcano and canyon in the Solar System.",
+    "basicInfo": {
+      "diameter": "6,779 km",
+      "distanceFromSun": "227.9 million km",
+      "surfaceTemperature": "−125 to 20 °C",
+      "moons": "2"
+    }
+  },
+  {
+    "name": "Jupiter",
+    "introduction": "Jupiter is the largest planet in the Solar System and is known for its Great Red Spot, a giant storm. It has a very strong magnetic field and dozens of moons.",
+    "basicInfo": {
+      "diameter": "139,820 km",
+      "distanceFromSun": "778.5 million km",
+      "surfaceTemperature": "−145 °C",
+      "moons": "79"
+    }
+  },
+  {
+    "name": "Saturn",
+    "introduction": "Saturn is famous for its extensive ring system, which is made up of ice, rock particles, and dust. It is the second-largest planet in the Solar System.",
+    "basicInfo": {
+      "diameter": "116,460 km",
+      "distanceFromSun": "1.43 billion km",
+      "surfaceTemperature": "−178 °C",
+      "moons": "83"
+    }
+  },
+  {
+    "name": "Uranus",
+    "introduction": "Uranus is an ice giant with a unique tilt that causes extreme seasonal variations. It has a faint ring system and is known for its blue-green color due to methane in the atmosphere.",
+    "basicInfo": {
+      "diameter": "50,724 km",
+      "distanceFromSun": "2.87 billion km",
+      "surfaceTemperature": "−197 °C",
+      "moons": "27"
+    }
+  },
+  {
+    "name": "Neptune",
+    "introduction": "Neptune is the farthest planet from the Sun and is known for its deep blue color and strong winds. It has a faint ring system and several moons.",
+    "basicInfo": {
+      "diameter": "49,244 km",
+      "distanceFromSun": "4.50 billion km",
+      "surfaceTemperature": "−201 °C",
+      "moons": "14"
+    }
+  }
+]
