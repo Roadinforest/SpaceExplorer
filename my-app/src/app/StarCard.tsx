@@ -41,7 +41,7 @@ const StarCard: React.FC<StarCardProps> = ({ planet }) => {
   };
 
   return (
-    <Card sx={{ maxWidth: 345, minHeight: 1 / 1 }}>
+    <Card sx={{ maxWidth: 300, minHeight: 1 / 1 }}>
       <CardMedia
         sx={{ height: 140 }}
         image={`/planets/${planet.name}.png`}

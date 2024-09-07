@@ -78,7 +78,7 @@ export function PlanetModel() {
 }
 export default function PlanetModel3D() {
   return (
-    <div style={{ height: 400, width: "100%" }}>
+    <div style={{ height: 300, width: "100%" }}>
       <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} intensity={1} />

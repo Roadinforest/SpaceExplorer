@@ -3,8 +3,11 @@ import { title } from "process";
 import { FormEvent, useEffect, useState } from "react";
 import { Post } from "./Chat";
 
-export default function PostSend()
-{
+interface PostSendProps {
+  addPost: (newPost: Post) => void;
+}
+
+export const PostSend: React.FC<PostSendProps> = ({ addPost }) => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState(""); // 添加 content 状态
@@ -21,7 +24,7 @@ export default function PostSend()
     axios
       .post<Post>("http://localhost:5000/posts", { title, content }) // 添加 content
       .then((response) => {
-        setPosts([response.data, ...posts]); // 修正拼写错误
+        addPost(response.data)
         setTitle("");
         setContent(""); // 清空 content
       })
@@ -76,4 +79,4 @@ export default function PostSend()
         </button>
       </form>
     )
-        }
+}

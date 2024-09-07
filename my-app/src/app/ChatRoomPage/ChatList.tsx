@@ -1,128 +1,90 @@
 import * as React from 'react';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import Divider from '@mui/material/Divider';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
-import Typography from '@mui/material/Typography';
 import { Post } from './Chat';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faThumbsUp as faThumbsUpSolid, faComment as faCommentSolid, faShare as faShareSolid } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsUp as faThumbsUpRegular, faComment as faCommentRegular } from '@fortawesome/free-regular-svg-icons';
 
 interface ChatListProps {
   posts: Post[];
 }
 
 export const ChatList: React.FC<ChatListProps> = ({ posts }) => {
+  const [likedPosts, setLikedPosts] = React.useState<Set<string>>(new Set());
+  const [commentedPosts, setCommentedPosts] = React.useState<Set<string>>(new Set());
+  const [sharedPosts, setSharedPosts] = React.useState<Set<string>>(new Set());
+  const [avatars, setAvatars] = React.useState<{ [key: string]: string }>({});
+
+  React.useEffect(() => {
+    const newAvatars = posts.reduce((acc, post) => {
+      acc[post._id] = `/Deemo/header${Math.floor(Math.random() * 6) + 1}.png`;
+      return acc;
+    }, {} as { [key: string]: string });
+    setAvatars(newAvatars);
+  }, [posts]);
+
+  const toggleLike = (postId: string) => {
+    setLikedPosts((prev) => {
+      const newLikedPosts = new Set(prev);
+      if (newLikedPosts.has(postId)) {
+        newLikedPosts.delete(postId);
+      } else {
+        newLikedPosts.add(postId);
+      }
+      return newLikedPosts;
+    });
+  };
+
+  const toggleComment = (postId: string) => {
+    setCommentedPosts((prev) => {
+      const newCommentedPosts = new Set(prev);
+      if (newCommentedPosts.has(postId)) {
+        newCommentedPosts.delete(postId);
+      } else {
+        newCommentedPosts.add(postId);
+      }
+      return newCommentedPosts;
+    });
+  };
+
+
   return (
-    // <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-
-    //   {/* 第一个列表项 */}
-    //   <ListItem alignItems="flex-start">
-
-    //     <ListItemAvatar>
-    //       <Avatar alt="Deemo" src={`/Deemo/header${Math.floor(Math.random() * 10) -3 }.png`} />
-    //     </ListItemAvatar>
-
-    //     <ListItemText
-    //       primary={post.title}
-    //       secondary={
-    //         <React.Fragment>
-    //           <Typography
-    //             component="span"
-    //             variant="body2"
-    //             sx={{ color: 'text.primary', display: 'inline' }}
-    //           >
-    //             {post.content}
-    //           </Typography>
-    //           <Typography
-    //             component="span"
-    //             variant="body2"
-    //             sx={{ color: 'text.secondary', display: 'block' }}
-    //           >
-    //             {new Date(post.createdAt).toLocaleString()}
-    //             {post._id}
-    //           </Typography>
-    //         </React.Fragment>
-    //       }
-    //     />
-    //   </ListItem>
-
-    //   <Divider variant="inset" component="li" />
-
-    // </List>
-
-    <div
-      className="posts"
-      style={{ flex: 2, marginLeft: "15px", marginRight: "15px" }}
-    >
+    <div className="posts mx-5">
       {posts.map((post) => (
         <div
           key={post._id}
-          className="post"
-          style={{
-            backgroundColor: "#fff",
-            padding: "20px",
-            marginBottom: "20px",
-            borderRadius: "10px",
-            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-          }}
+          className="post bg-white p-5 mb-5 rounded-lg shadow-md"
         >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              marginBottom: "10px",
-            }}
-          >
+          <div className="flex items-center mb-2.5">
             <Avatar
               alt="Deemo"
-              src={`/Deemo/header${Math.floor(Math.random() * 6) + 1}.png`}
+              src={avatars[post._id]}
             />
             <div>
-              <h2 style={{ margin: 0 }}>{post.title}</h2>
+              <h2 className="m-0">{post.title}</h2>
               <small>{new Date(post.createdAt).toLocaleString()}</small>
             </div>
           </div>
           <p>{post.content}</p>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              marginTop: "10px",
-            }}
-          >
+          <div className="flex justify-between mt-2.5">
             <div>
               <button
-                style={{
-                  background: "none",
-                  border: "none",
-                  color: "#007bff",
-                  cursor: "pointer",
-                }}
+                className="bg-none border-none text-blue-500 cursor-pointer"
+                onClick={() => toggleLike(post._id)}
               >
-                Like
+                <FontAwesomeIcon icon={likedPosts.has(post._id) ? faThumbsUpSolid : faThumbsUpRegular} />
               </button>
               <button
-                style={{
-                  background: "none",
-                  border: "none",
-                  color: "#007bff",
-                  cursor: "pointer",
-                  marginLeft: "10px",
-                }}
+                className="bg-none border-none text-blue-500 cursor-pointer ml-2.5"
+                onClick={() => toggleComment(post._id)}
               >
-                Comment
+                <FontAwesomeIcon icon={commentedPosts.has(post._id) ? faCommentSolid : faCommentRegular} /> Comment
               </button>
             </div>
             <button
-              style={{
-                background: "none",
-                border: "none",
-                color: "#007bff",
-                cursor: "pointer",
-              }}
+              className="bg-none border-none text-blue-500 cursor-pointer"
             >
-              Share
+              <FontAwesomeIcon icon={faShareSolid} /> Share
             </button>
           </div>
         </div>
