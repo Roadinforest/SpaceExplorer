@@ -77,3 +77,16 @@ This project is licensed under the MIT License.
 
 这个双语介绍涵盖了项目的核心功能、技术栈以及使用方法，能够帮助国际和国内开发者快速了解并参与到你的项目中来。如果需要进一步调整，随时告知我！# SpaceExplorer
 Space Explorer is a space-themed educational website built with React and Next.js, dedicated to sharing the latest astronomical knowledge and space exploration news from around the world. Our goal is to help users better understand the mysteries and wonders of the universe through authoritative articles and an interactive community.
+
+## 如何启动本地服务器和客户端
+
+### 启动服务器
+```bash
+node .\my-app\server\index.mjs
+```
+
+### 启动客户端
+```bash
+npm run dev
+```
+

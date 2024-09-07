@@ -33,7 +33,7 @@ export default function SideBar() {
     <Box sx={{ width: 300 }} role="presentation" >
         <ProfileCard profileName='Astronaut'></ProfileCard>
 
-        <div>
+        {/* <div>
           <Accordion>
             <AccordionSummary
               expandIcon={<ArrowDropDownIcon />}
@@ -72,7 +72,7 @@ export default function SideBar() {
               </Typography>
             </AccordionDetails>
           </Accordion>
-        </div>
+        </div> */}
 
       {/* <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
@@ -92,7 +92,17 @@ export default function SideBar() {
 
   return (
     <div>
-      <Button onClick={toggleDrawer(true)}>Person Page</Button>
+      <Button 
+        onClick={toggleDrawer(true)} 
+        sx={{ 
+          display: 'flex', 
+          alignItems: 'center',
+          height: '100%',
+          left: '12px'
+        }}
+      >
+        个人页面
+      </Button>
       <Drawer open={open} onClose={toggleDrawer(false)}>
         {DrawerList}
       </Drawer>

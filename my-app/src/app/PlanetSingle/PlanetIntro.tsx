@@ -2,7 +2,6 @@ import { Planet } from "../StarCard";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from 'next/link';
-import { Divider } from "@mui/material";
 
 export default function PlanetIntro({ prop }: { prop: Planet }) {
   const [isClient, setIsClient] = useState(false);
@@ -18,7 +17,7 @@ export default function PlanetIntro({ prop }: { prop: Planet }) {
         <BackgroundEffects />
 
         {/* 返回按钮 */}
-        <div className="absolute top-4 right-4 z-10">
+        <div className="absolute top-4 left-12 z-10">
           <Link href="/" className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-all shadow-md">
             返回首页
           </Link>

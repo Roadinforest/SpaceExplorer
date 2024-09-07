@@ -39,7 +39,7 @@ export default function ProfileCard({ profileName }: ProfileCardProps) {
 
       </CardContent>
 
-      <CardActions>
+      <CardActions sx={{ justifyContent: 'flex-end' }}>
         <Button size="small" onClick={() => window.open('https://github.com/Roadinforest', '_blank')}>
           <GitHubIcon />
         </Button>
