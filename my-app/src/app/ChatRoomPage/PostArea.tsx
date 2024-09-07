@@ -1,13 +1,12 @@
+// 这是废弃的一版，将PostSend和PostList放置到中间部分
+// 通过MongoDB进行获取
 import React, { useState, useEffect, FormEvent } from 'react';
 import axios from 'axios';
-import {ChatList} from './ChatList';
+import { Post } from './Post';
+import {PostList} from './PostList';
+import { PostSend } from './PostSend';
+import { Avatar } from '@mui/material';
 
-export interface Post {
-  _id: string;
-  title: string;
-  content: string;
-  createdAt: string;
-}
 
 function PostPage() {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -44,9 +43,8 @@ function PostPage() {
   return (
     <div>
 
-      <ChatList posts={posts}></ChatList>
-
-      {/* <PostSend addPost={addPost}></PostSend> */}
+      <PostSend addPost={addPost}></PostSend>
+      <PostList posts={posts}></PostList>
 
     </div>
   );
