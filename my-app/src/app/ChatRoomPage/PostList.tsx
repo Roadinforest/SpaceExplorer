@@ -11,16 +11,16 @@ export const PostList: React.FC<PostListProps> = ({ posts }) => {
 
   React.useEffect(() => {
     const newAvatars = posts.reduce((acc, post) => {
-      acc[post.id] = `/Deemo/header${Math.floor(Math.random() * 6) + 1}.png`;
+      acc[post._id] = `/Deemo/header${Math.floor(Math.random() * 6) + 1}.png`;
       return acc;
     }, {} as { [key: string]: string });
     setAvatars(newAvatars);
   }, [posts]);
 
   return (
-    <div className="posts mx-5">
+    <div className="posts mx-5 space-y-8">
       {posts.map((post) => (
-        <Post key={post.id} post={post} avatars={avatars}></Post>
+        <Post key={post._id} post={post} avatars={avatars}></Post>
       ))}
     </div>
   );
