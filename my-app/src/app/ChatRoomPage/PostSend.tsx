@@ -32,7 +32,11 @@ export const PostSend: React.FC<PostSendProps> = ({ addPost }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4 rounded-lg">
+    // <div className="post bg-white p-5 mb-5 rounded-lg shadow-md">
+    <form onSubmit={handleSubmit} 
+    className="post bg-white p-5 mb-5 rounded-lg shadow-lg flex flex-col gap-4 p-4 rounded-lg"
+    style={{marginTop:"20px"}}>
+      
       <div className="flex items-center gap-4">
         <Avatar src="/astronaut.png" alt="User" />
         <input

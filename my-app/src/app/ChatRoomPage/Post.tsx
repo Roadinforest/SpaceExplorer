@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsUp as faThumbsUpSolid, faComment as faCommentSolid, faShare as faShareSolid } from '@fortawesome/free-solid-svg-icons';
 import { faThumbsUp as faThumbsUpRegular, faComment as faCommentRegular } from '@fortawesome/free-regular-svg-icons';
 import { CommentSend } from './CommentSend';
+import axios from 'axios';
 
 export interface Post {
   _id: string;
@@ -54,9 +55,26 @@ export const Post: React.FC<PostProps> = ({ post , avatars}) => {
     });
   };
 
-  const addComment= (postId: string) => {
+  const addComment = async (comment_content: string) => {
     console.log("This is the add comment function")
-  }
+    try {
+      const response = await axios.post(`http://localhost:5000/posts/${post._id}/comments`, {
+        content: comment_content
+      });
+      
+      // 假设后端返回更新后的帖子数据
+      const updatedPost = response.data;
+      
+      // 这里你可能需要更新本地状态或触发父组件重新获取帖子数据
+      console.log("Comment added successfully", updatedPost);
+      
+      // 如果你有更新本地状态的函数，可以在这里调用
+      // updatePost(updatedPost);
+    } catch (error) {
+      console.error("Error adding comment:", error);
+    }
+  };
+  
 
   return (
     <div className="post bg-white p-5 mb-5 rounded-lg shadow-md">
